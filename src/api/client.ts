@@ -1,17 +1,18 @@
 import axios, { type AxiosResponse } from "axios";
-import type { Post, PostResponse } from "../types/post";
+import type { Product, ProductResponse } from "../types/product";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
-export const postApi = {
-  getPosts: (search?: string): Promise<AxiosResponse<PostResponse>> => {
-    return axios.get<PostResponse>(`${baseUrl}/search`, {
+export const productApi = {
+  getProducts: (search?: string): Promise<AxiosResponse<ProductResponse>> => {
+    return axios.get<ProductResponse>(`${baseUrl}/search`, {
       params: {
         q: search ?? "",
+        limit: 20,
       },
     });
   },
-  getPostDetail: (id: number): Promise<AxiosResponse<Post>> => {
-    return axios.get<Post>(`${baseUrl}/${id}`);
+  getDetailProduct: (id: number): Promise<AxiosResponse<Product>> => {
+    return axios.get<Product>(`${baseUrl}/${id}`);
   },
 };

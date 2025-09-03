@@ -6,17 +6,21 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Home } from "./pages/Home";
-import { About } from "./pages/About";
-import { Post } from "./pages/Post";
-import { PostDetail } from "./pages/PostDetail";
+import { ShoppingCart } from "lucide-react";
+import { Product } from "./pages/Product";
+import { ProductDetail } from "./pages/ProductDetail";
+import { Cart } from "./pages/Cart";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <div className="flex flex-col items-start p-6 gap-4">
-          <NavigationMenu>
+          <NavigationMenu className="sticky top-0 p-2 bg-white w-full shadow rounded-md">
             <NavigationMenuList>
+              <NavigationMenuItem className="pr-4">
+                <ShoppingCart size={20} />
+              </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link to="/">Home</Link>
@@ -24,21 +28,21 @@ function App() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link to="/about">About</Link>
+                  <Link to="/products">Products</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link to="/posts">Posts</Link>
+                  <Link to="/cart">Cart</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/posts" element={<Post />} />
-            <Route path="/posts/:id" element={<PostDetail />} />
+            <Route path="/products" element={<Product />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </BrowserRouter>
