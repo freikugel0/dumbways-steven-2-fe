@@ -9,14 +9,18 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Post } from "./pages/Post";
 import { PostDetail } from "./pages/PostDetail";
+import { MessageSquareText } from "lucide-react";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <div className="flex flex-col items-start p-6 gap-4">
-          <NavigationMenu>
+          <NavigationMenu className="p-2 sticky top-0 bg-white rounded-md shadow">
             <NavigationMenuList>
+              <NavigationMenuItem className="pr-4">
+                <MessageSquareText size={20} />
+              </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link to="/">Home</Link>
