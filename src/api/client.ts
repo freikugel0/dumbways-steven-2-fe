@@ -1,15 +1,17 @@
 import axios, { type AxiosResponse } from "axios";
-import type { WeatherResponse } from "../types/weather";
+import type { Post, PostResponse } from "../types/post";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
-const apiKey = import.meta.env.VITE_API_KEY;
 
-export const weatherApi = {
-  getWeatherByName: (
-    search: string,
-  ): Promise<AxiosResponse<WeatherResponse>> => {
-    return axios.get<WeatherResponse>(
-      `${baseUrl}?units=metric&q=${search}&appid=${apiKey}`,
-    );
+export const postApi = {
+  getPosts: (search?: string): Promise<AxiosResponse<PostResponse>> => {
+    return axios.get<PostResponse>(`${baseUrl}/search`, {
+      params: {
+        q: search ?? "",
+      },
+    });
+  },
+  getPostDetail: (id: number): Promise<AxiosResponse<Post>> => {
+    return axios.get<Post>(`${baseUrl}/${id}`);
   },
 };

@@ -1,25 +1,48 @@
-import { useState } from "react";
-import { useDebounce } from "./hooks/useDebounce";
-import Weather from "./components/weather";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Post } from "./pages/Post";
+import { PostDetail } from "./pages/PostDetail";
 
 function App() {
-  const [keyword, setKeyword] = useState("oregon,us");
-  const debouncedKeyword = useDebounce(keyword, 500);
-
   return (
-    <div className="flex justify-center min-h-screen text-black dark:text-gray-200 bg-gray-200 dark:bg-gray-900">
-      <div className="flex flex-col justify-center gap-2 w-sm p-4">
-        <div className="flex flex-col gap-1">
-          <input
-            className="border-b p-2 text-sm outline-none"
-            type="text"
-            placeholder="Search city and/or country"
-            onChange={(e) => setKeyword(e.currentTarget.value)}
-          />
+    <>
+      <BrowserRouter>
+        <div className="flex flex-col items-start p-6 gap-4">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/">Home</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/about">About</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link to="/posts">Posts</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/posts" element={<Post />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
+          </Routes>
         </div>
-        <Weather keyword={debouncedKeyword} />
-      </div>
-    </div>
+      </BrowserRouter>
+    </>
   );
 }
 
