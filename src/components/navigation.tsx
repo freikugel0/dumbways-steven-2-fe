@@ -5,7 +5,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { useAuth } from "@/hooks/useAuth";
-import { ShoppingCart } from "lucide-react";
+import { Clapperboard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {
@@ -16,7 +16,7 @@ export const Navigation = () => {
       <NavigationMenu className="p-2 bg-white w-full shadow rounded-md">
         <NavigationMenuList>
           <NavigationMenuItem className="pr-4">
-            <ShoppingCart size={20} />
+            <Clapperboard size={20} />
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
@@ -25,16 +25,9 @@ export const Navigation = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/products">Products</Link>
+              <Link to="/movies">Movies</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          {token && (
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/cart">Cart</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          )}
         </NavigationMenuList>
       </NavigationMenu>
       <NavigationMenu className="p-2 bg-white w-full shadow rounded-md">
@@ -48,7 +41,7 @@ export const Navigation = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/favorites">Favorites</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </>

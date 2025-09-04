@@ -1,18 +1,27 @@
 import axios, { type AxiosResponse } from "axios";
-import type { Product, ProductResponse } from "../types/product";
+import type { MovieListResponse, MovieDetailResponse } from "../types/movie";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
+const apiKey = import.meta.env.VITE_API_KEY;
 
-export const productApi = {
-  getProducts: (search?: string): Promise<AxiosResponse<ProductResponse>> => {
-    return axios.get<ProductResponse>(`${baseUrl}/search`, {
+export const movieApi = {
+  getMovies: (search?: string): Promise<AxiosResponse<MovieListResponse>> => {
+    return axios.get<MovieListResponse>(`${baseUrl}`, {
       params: {
-        q: search ?? "",
+        apiKey,
+        s: search ?? "resident", // Default must be defined
         limit: 20,
       },
     });
   },
-  getDetailProduct: (id: number): Promise<AxiosResponse<Product>> => {
-    return axios.get<Product>(`${baseUrl}/${id}`);
+  getDetailMovies: (
+    id: string,
+  ): Promise<AxiosResponse<MovieDetailResponse>> => {
+    return axios.get<MovieDetailResponse>(`${baseUrl}`, {
+      params: {
+        apiKey,
+        i: id,
+      },
+    });
   },
 };

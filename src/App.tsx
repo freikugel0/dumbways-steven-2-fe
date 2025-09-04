@@ -3,11 +3,10 @@ import { Home } from "./pages/Home";
 import { Navigation } from "./components/navigation";
 import { AuthProvider } from "./contexts/Auth";
 import { Login } from "./pages/Login";
-import { Dashboard } from "./pages/Dashboard";
-import { Cart } from "./pages/Cart";
-import { Product } from "./pages/Product";
-import { ProductDetail } from "./pages/ProductDetail";
 import { PrivateRoute } from "./components/private-route";
+import { Movie } from "./pages/Movie";
+import { Favorite } from "./pages/Favorite";
+import { MovieDetail } from "./pages/MovieDetail";
 
 function App() {
   return (
@@ -19,14 +18,14 @@ function App() {
             <div className="flex-1 w-full h-full flex">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/products" element={<Product />} />
-                <Route path="/products/:id" element={<ProductDetail />} />
                 <Route path="/login" element={<Login />} />
+
+                <Route path="/movies" element={<Movie />} />
+                <Route path="/movies/:id" element={<MovieDetail />} />
 
                 {/* Private Routes */}
                 <Route element={<PrivateRoute />}>
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/favorites" element={<Favorite />} />
                 </Route>
               </Routes>
             </div>
