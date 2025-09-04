@@ -47,8 +47,9 @@ export const Product = () => {
 
     handleFetch();
   }, []);
+
   return (
-    <div className="flex gap-2 justify-start">
+    <div className="flex gap-2 justify-center w-full">
       {loading ? (
         <Spinner />
       ) : error ? (
@@ -58,7 +59,7 @@ export const Product = () => {
             : error instanceof Error && error.message}
         </p>
       ) : data && data.products.length > 0 ? (
-        <div className="grid grid-cols-3 gap-2 w-full">
+        <div className="grid grid-cols-3 md:grid-cols-4 gap-2 w-full">
           {data.products.map((product) => (
             <Link
               key={product.id}
@@ -66,7 +67,7 @@ export const Product = () => {
                 pathname: `/products/${product.id}`,
               }}
             >
-              <Card className="hover:cursor-pointer hover:opacity-70 transition-opacity">
+              <Card className="hover:cursor-pointer hover:opacity-70 transition-opacity h-full">
                 <CardHeader>
                   <CardTitle>{product.title}</CardTitle>
                   <CardDescription>
@@ -75,7 +76,12 @@ export const Product = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-col gap-2">
-                    <img src={product.thumbnail} alt={product.title} />
+                    <img
+                      className="mx-auto"
+                      src={product.thumbnail}
+                      alt={product.title}
+                      width={200}
+                    />
                     <div>
                       <p className="font-bold text-2xl">${product.price}</p>
                       <Badge className="bg-amber-300">
@@ -85,7 +91,7 @@ export const Product = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <div className="flex gap-2 items-center">
+                  <div className="flex flex-wrap gap-2 items-center">
                     {product.tags.map((tag) => (
                       <p key={tag}>#{tag}</p>
                     ))}
