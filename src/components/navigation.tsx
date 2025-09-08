@@ -18,12 +18,12 @@ export const Navigation = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/">Overview</Link>
+              <Link to="/">Products</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/todos">Todos</Link>
+              <Link to="/cart">Cart</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
