@@ -1,12 +1,12 @@
 export const Home = () => {
   return (
     <div>
-      <h1 className="text-xl font-semibold">Welcome!</h1>
-      <p>This is a simple React Router DOM demo project.</p>
+      <h1 className="text-xl font-semibold">Welcome, Task Master!</h1>
+      <p>Every great journey starts with one todo</p>
       <p>
-        Use the navigation menu to explore the <strong>Products</strong> page to
-        add items into a cart and check out the <strong>Cart</strong> page to
-        see the items that has been added.
+        Head over to the <strong>Todos</strong> page to create your list and
+        conquer them one by one. Visit this <strong>Overview</strong> page to
+        keep track of your progress
       </p>
     </div>
   );

@@ -4,54 +4,35 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { useAuth } from "@/hooks/useAuth";
-import { Clapperboard } from "lucide-react";
+import { NotebookPen } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ThemeToggle } from "./theme-toggle";
 
 export const Navigation = () => {
-  const { token, logout } = useAuth();
-
   return (
     <div className="flex justify-between w-full sticky top-0">
-      <NavigationMenu className="p-2 bg-white w-full shadow rounded-md">
+      <NavigationMenu className="bg-card text-card-foreground border p-2 w-full shadow rounded-md">
         <NavigationMenuList>
           <NavigationMenuItem className="pr-4">
-            <Clapperboard size={20} />
+            <NotebookPen />
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/">Home</Link>
+              <Link to="/">Overview</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/movies">Movies</Link>
+              <Link to="/todos">Todos</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <NavigationMenu className="p-2 bg-white w-full shadow rounded-md">
+      <NavigationMenu className="bg-card text-card-foreground border p-2 w-full shadow rounded-md">
         <NavigationMenuList>
-          {token ? (
-            <>
-              <NavigationMenuItem>
-                <NavigationMenuLink onClick={() => logout()}>
-                  <p className="hover:cursor-pointer">Logout</p>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link to="/favorites">Favorites</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </>
-          ) : (
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link to="/login">Login</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          )}
+          <NavigationMenuItem>
+            <ThemeToggle />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
